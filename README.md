@@ -12,20 +12,20 @@
 ### NPM
 
 ```bash
-npm add HoneyHive
+npm add honeyhive
 ```
 
 ### Yarn
 
 ```bash
-yarn add HoneyHive
+yarn add honeyhive
 ```
 <!-- End SDK Installation -->
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async () => {
     const sdk = new HoneyHive({
@@ -105,7 +105,7 @@ For example:
 
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async () => {
     const sdk = new HoneyHive({
@@ -131,7 +131,7 @@ The default server can also be overridden globally by passing a URL to the `serv
 
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async () => {
     const sdk = new HoneyHive({
@@ -160,7 +160,7 @@ The Typescript SDK makes API calls using the (axios)[https://axios-http.com/docs
 For example, you could specify a header for every request that your sdk makes as follows:
 
 ```typescript
-from HoneyHive import HoneyHive;
+from honeyhive import HoneyHive;
 import axios;
 
 const httpClient = axios.create({

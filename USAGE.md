@@ -2,7 +2,7 @@
 
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async () => {
     const sdk = new HoneyHive({

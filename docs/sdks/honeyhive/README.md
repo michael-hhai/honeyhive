@@ -42,7 +42,7 @@ Delete a dataset
 ### Example Usage
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async() => {
   const sdk = new HoneyHive({
@@ -80,7 +80,7 @@ Delete a metric
 ### Example Usage
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async() => {
   const sdk = new HoneyHive({
@@ -120,7 +120,7 @@ Delete a prompt
 ### Example Usage
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async() => {
   const sdk = new HoneyHive({
@@ -158,7 +158,7 @@ Delete a task
 ### Example Usage
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async() => {
   const sdk = new HoneyHive({
@@ -196,7 +196,7 @@ Get datasets
 ### Example Usage
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async() => {
   const sdk = new HoneyHive({
@@ -232,7 +232,7 @@ Get all fine-tuned models
 ### Example Usage
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async() => {
   const sdk = new HoneyHive({
@@ -268,7 +268,7 @@ Get a fine-tuned model
 ### Example Usage
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async() => {
   const sdk = new HoneyHive({
@@ -306,7 +306,7 @@ Get all generations
 ### Example Usage
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async() => {
   const sdk = new HoneyHive({
@@ -342,7 +342,7 @@ Get all metrics
 ### Example Usage
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async() => {
   const sdk = new HoneyHive({
@@ -378,7 +378,7 @@ Get all prompts
 ### Example Usage
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async() => {
   const sdk = new HoneyHive({
@@ -414,7 +414,7 @@ Get all sessions
 ### Example Usage
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async() => {
   const sdk = new HoneyHive({
@@ -452,7 +452,7 @@ Get a session
 ### Example Usage
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async() => {
   const sdk = new HoneyHive({
@@ -490,7 +490,7 @@ Get a session in Trace Event format
 ### Example Usage
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async() => {
   const sdk = new HoneyHive({
@@ -528,7 +528,7 @@ Get all tasks
 ### Example Usage
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async() => {
   const sdk = new HoneyHive({
@@ -564,7 +564,7 @@ Create a dataset
 ### Example Usage
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async() => {
   const sdk = new HoneyHive({
@@ -604,7 +604,7 @@ Log an evaluation
 ### Example Usage
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async() => {
   const sdk = new HoneyHive({
@@ -667,7 +667,7 @@ Send feedback
 ### Example Usage
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async() => {
   const sdk = new HoneyHive({
@@ -705,7 +705,7 @@ Generate a text
 ### Example Usage
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async() => {
   const sdk = new HoneyHive({
@@ -748,7 +748,7 @@ Log a generation
 ### Example Usage
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async() => {
   const sdk = new HoneyHive({
@@ -791,7 +791,7 @@ Create a metric
 ### Example Usage
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async() => {
   const sdk = new HoneyHive({
@@ -827,7 +827,7 @@ Create a prompt
 ### Example Usage
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async() => {
   const sdk = new HoneyHive({
@@ -870,7 +870,7 @@ Start a session
 ### Example Usage
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async() => {
   const sdk = new HoneyHive({
@@ -908,7 +908,7 @@ End a session
 ### Example Usage
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async() => {
   const sdk = new HoneyHive({
@@ -946,7 +946,7 @@ Log an event
 ### Example Usage
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async() => {
   const sdk = new HoneyHive({
@@ -993,7 +993,7 @@ Log session feedback
 ### Example Usage
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async() => {
   const sdk = new HoneyHive({
@@ -1034,7 +1034,7 @@ Log a trace
 ### Example Usage
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async() => {
   const sdk = new HoneyHive({
@@ -1085,7 +1085,7 @@ Create a task
 ### Example Usage
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async() => {
   const sdk = new HoneyHive({
@@ -1150,7 +1150,7 @@ Update a prompt
 ### Example Usage
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async() => {
   const sdk = new HoneyHive({
@@ -1199,7 +1199,7 @@ Update a task
 ### Example Usage
 
 ```typescript
-import { HoneyHive } from "HoneyHive";
+import { HoneyHive } from "honeyhive";
 
 (async() => {
   const sdk = new HoneyHive({
