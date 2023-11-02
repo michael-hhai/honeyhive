@@ -25,6 +25,5 @@ typescript:
   flattenGlobalSecurity: true
   installationURL: https://github.com/speakeasy-sdks/honeyhive
   maxMethodParams: 0
-  packageName: HoneyHive
-  published: true
+  packageName: honeyhive
   repoSubDirectory: .
