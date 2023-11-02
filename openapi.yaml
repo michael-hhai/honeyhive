@@ -1,0 +1,1415 @@
+openapi: 3.0.3
+info:
+  title: HoneyHive API
+  version: 1.0.1
+servers:
+  - url: https://api.honeyhive.ai
+paths:
+  /tasks:
+    get:
+      summary: Get all tasks
+      parameters:
+        - in: query
+          name: name
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TaskResponse'
+    post:
+      summary: Create a task
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskCreationQuery'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskResponse'
+    delete:
+      summary: Delete a task
+      parameters:
+        - in: query
+          name: name
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteResponse'
+    put:
+      summary: Update a task
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskUpdateQuery'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskUpdateResponse'
+  /generations:
+    get:
+      summary: Get all generations
+      parameters:
+        - in: query
+          name: task
+          schema:
+            type: string
+        - in: query
+          name: prompt
+          schema:
+            type: string
+        - in: query
+          name: model_id
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Generation'
+    post:
+      summary: Generate a text
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateQuery'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenerationResponse'
+  /prompts:
+    get:
+      summary: Get all prompts
+      parameters:
+        - in: query
+          name: task
+          schema:
+            type: string
+        - in: query
+          name: name
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PromptResponse'
+    post:
+      summary: Create a prompt
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PromptCreationQuery'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromptResponse'
+  /prompts/{id}:
+    put:
+      summary: Update a prompt
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PromptUpdateQuery'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromptResponse'
+    delete:
+      summary: Delete a prompt
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteResponse'
+  /fine_tuned_models:
+    get:
+      summary: Get all fine-tuned models
+      parameters:
+        - in: query
+          name: task
+          schema:
+            type: string
+        - in: query
+          name: model_id
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FineTunedModelResponse'
+  /fine_tuned_models/{id}:
+    get:
+      summary: Get a fine-tuned model
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FineTunedModelResponse'
+  /datasets:
+    get:
+      summary: Get datasets
+      parameters:
+        - in: query
+          name: task
+          schema:
+            type: string
+        - in: query
+          name: prompt
+          schema:
+            type: string
+        - in: query
+          name: dataset_id
+          schema:
+            type: string
+        - in: query
+          name: purpose
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DatasetResponse'
+    post:
+      summary: Create a dataset
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UploadDataset'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatasetResponse'
+  /datasets/{name}:
+    delete:
+      summary: Delete a dataset
+      parameters:
+        - in: path
+          name: name
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteResponse'
+  /metrics:
+    get:
+      summary: Get all metrics
+      parameters:
+        - in: query
+          name: task
+          schema:
+            type: string
+        - in: query
+          name: metric_id
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MetricResponse'
+    post:
+      summary: Create a metric
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MetricRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetricCreateResponse'
+    delete:
+      summary: Delete a metric
+      parameters:
+        - in: query
+          name: task
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: name
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: metric_id
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteResponse'
+  /generations/log:
+    post:
+      summary: Log a generation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerationLoggingQuery'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenerationResponse'
+  /feedback:
+    post:
+      summary: Send feedback
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FeedbackQuery'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeedbackResponse'
+  /evaluations:
+    post:
+      summary: Log an evaluation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EvaluationLoggingQuery'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+  /session/start:
+    post:
+      summary: Start a session
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SessionStartQuery'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionStartResponse'
+  /session/{session_id}/end:
+    post:
+      summary: End a session
+      parameters:
+        - in: path
+          name: session_id
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionEndResponse'
+  /session/{session_id}/event:
+    post:
+      summary: Log an event
+      parameters:
+        - in: path
+          name: session_id
+          schema:
+            type: string
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SessionEventQuery'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionEventResponse'
+  /session/{session_id}/feedback:
+    post:
+      summary: Log session feedback
+      parameters:
+        - in: path
+          name: session_id
+          schema:
+            type: string
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SessionFeedback'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+  /session/{session_id}:
+    get:
+      summary: Get a session
+      parameters:
+        - in: path
+          name: session_id
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionEventQuery'
+  /session/{session_id}/export:
+    get:
+      summary: Get a session in Trace Event format
+      parameters:
+        - in: path
+          name: session_id
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TraceEventTrace'
+  /session:
+    get:
+      summary: Get all sessions
+      parameters:
+        - in: query
+          name: project
+          schema:
+            type: string
+          description: The project to query sessions for
+          # You can also add "required: true" if it's a mandatory field
+        - in: query
+          name: query
+          schema:
+            type: object
+          description: The query for finding sessions
+          # This uses a general object. If the structure of the query object is known and limited, 
+          # you might want to specify its properties or use a $ref to another schema.
+          style: form
+          explode: true
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: The maximum number of sessions to return
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SessionEventQuery'
+
+  /sessions/{session_id}/traces:
+    post:
+      summary: Log a trace
+      parameters:
+        - in: path
+          name: session_id
+          schema:
+            type: string
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SessionTrace'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessTraceResponse'
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    TaskCreationQuery:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the task
+        description:
+          type: string
+          description: The description of the task
+        type:
+          type: string
+          description: The type of the task
+        fine_tuned_models:
+          type: array
+          items:
+            $ref: '#/components/schemas/FineTunedModelResponse'
+          description: The fine-tuned models for the task
+        prompts:
+          type: array
+          items:
+            $ref: '#/components/schemas/PromptResponse'
+          description: The prompts for the task
+        datasets:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatasetResponse'
+          description: The datasets for the task
+        metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricResponse'
+          description: The metrics for the task
+        created_at:
+          type: string
+          format: date-time
+          description: The timestamp of when the task was created
+        updated_at:
+          type: string
+          format: date-time
+          description: The timestamp of when the task was last updated
+      description: The request object for creating a task
+
+    TaskUpdateQuery:
+      type: object
+      properties:
+        task_id:
+          type: string
+          description: The id of the task being updated
+        name:
+          type: string
+          description: The new name of the task
+        type:
+          type: string
+          description: The new type of the task
+        fine_tuned_models:
+          type: array
+          items:
+            $ref: '#/components/schemas/FineTunedModelResponse'
+          description: The new fine-tuned models for the task
+        prompts:
+          type: array
+          items:
+            $ref: '#/components/schemas/PromptResponse'
+          description: The new prompts for the task
+        datasets:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatasetResponse'
+          description: The new datasets for the task
+        metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricResponse'
+          description: The new metrics for the task
+      description: The request object for updating a task
+
+    TaskUpdateResponse:
+      type: object
+      properties:
+        acknowledged:
+          type: boolean
+          description: Boolean flag representing if the update operation was successful
+        modifiedCount:
+          type: integer
+          description: Number of modified tasks
+        upsertedId:
+          type: string
+          description: The upserted ID of the task, if id has been changed
+          nullable: true
+        upsertedCount:
+          type: integer
+          description: Number of upserted tasks
+        matchedCount:
+          type: integer
+          description: Number of modified tasks
+
+    TaskResponse:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the task
+        description:
+          type: string
+          description: The description of the task
+          nullable: true
+        type:
+          type: string
+          description: The type of the task
+          nullable: true
+        fine_tuned_models:
+          type: array
+          items:
+            $ref: '#/components/schemas/FineTunedModelResponse'
+          description: The fine-tuned models for the task
+        prompts:
+          type: array
+          items:
+            $ref: '#/components/schemas/PromptResponse'
+          description: The prompts for the task
+        datasets:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatasetResponse'
+          description: The datasets for the task
+        metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricResponse'
+          description: The metrics for the task
+        created_at:
+          type: string
+          format: date-time
+          description: The timestamp of when the task was created
+        updated_at:
+          type: string
+          format: date-time
+          description: The timestamp of when the task was last updated
+        tenant:
+          type: string
+          description: The tenant that this task belongs to
+        id:
+          type: string
+          description: The ID of the task
+      description: The response object for a task
+
+    DeleteResponse:
+      type: object
+      properties:
+        deleted:
+          type: boolean
+          description: Indicates whether the object was deleted or not
+      description: The response object for a delete operation
+
+    Generation:
+      type: object
+      properties:
+        generation_id:
+          type: string
+          description: The unique ID of the generation
+        version:
+          type: string
+          description: The unique ID of the prompt
+        task:
+          type: string
+          description: The task for which the generation is being requested
+        model:
+          type: string
+          description: The model that was used to generate the text
+        hyperparameters:
+          type: object
+          additionalProperties: true
+          description: The hyperparameters that were used to generate the text
+        generation:
+          type: string
+          description: The generated completion
+        total_tokens:
+          type: integer
+          description: The total number of tokens generated
+        completion_tokens:
+          type: integer
+          description: The number of tokens generated for the completion
+        cost:
+          type: number
+          description: The cost of the generation
+        latency:
+          type: number
+          description: The latency of the generation in milliseconds
+        source:
+          type: string
+          description: The source of the generation
+        feedback:
+          type: object
+          additionalProperties: true
+          description: The feedback associated with this generation
+      description: The response object for a generation
+    PromptResponse:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The unique name of the prompt
+        version:
+          type: string
+          description: The version of the prompt
+        task:
+          type: string
+          description: The task for which the prompt is being created
+        text:
+          type: string
+          description: The text of the prompt
+        input_variables:
+          type: array
+          items:
+            type: string
+          description: The input variables to feed into the prompt
+        model:
+          type: string
+          description: The model to be used for the prompt
+        hyperparameters:
+          type: object
+          additionalProperties: true
+          description: The hyperparameters for the prompt
+        is_deployed:
+          type: boolean
+          description: Flag indicating if the prompt is deployed
+        few_shot_examples:
+          type: array
+          items:
+            type: object
+          description: The few shot examples for the prompt
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+          description: The timestamp of when the prompt was created
+        updated_at:
+          type: string
+          format: date-time
+          description: The timestamp of when the prompt was last updated
+      description: The response object for a prompt
+    PromptCreationQuery:
+      type: object
+      properties:
+        task:
+          type: string
+          description: The task for which the prompt is being created
+        version:
+          type: string
+          description: The version of the prompt
+        model:
+          type: string
+          description: The model to be used for the prompt
+        text:
+          type: string
+          description: The text of the prompt
+        chat:
+          type: string
+          description: The text of the chat prompt
+        hyperparameters:
+          type: object
+          additionalProperties: true
+          description: The hyperparameters for the prompt
+        provider:
+          type: string
+          description: The model provider
+        is_deployed:
+          type: boolean
+          description: Flag indicating if the prompt is deployed
+        few_shot_examples:
+          type: array
+          items:
+            type: object
+          description: The few shot examples for the prompt
+      description: The request object for creating a prompt
+    PromptUpdateQuery:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the prompt
+        version:
+          type: string
+          description: The version of the prompt
+        input_variables:
+          type: array
+          items:
+            type: string
+          description: The input variables to feed into the prompt
+        model:
+          type: string
+          description: The model to be used for the prompt
+        hyperparameters:
+          type: object
+          additionalProperties: true
+          description: The hyperparameters for the prompt
+        is_deployed:
+          type: boolean
+          description: Flag indicating if the prompt is deployed
+        few_shot_examples:
+          type: array
+          items:
+            type: object
+          description: The few shot examples for the prompt
+      description: The request object for updating a prompt
+    FineTunedModelResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the fine-tuned model
+        object:
+          type: string
+          description: The object type of the fine-tuned model
+        model:
+          type: string
+          description: The model used for fine-tuning
+        created_at:
+          type: string
+          format: date-time
+          description: The timestamp of when the fine-tuned model was created
+        updated_at:
+          type: string
+          format: date-time
+          description: The timestamp of when the fine-tuned model was last updated
+        fine_tuned_model:
+          type: string
+          description: The fine-tuned model
+        hyperparams:
+          type: string
+          description: The hyperparameters used for fine-tuning
+        org_id:
+          type: string
+          description: The ID of the organization
+        result_files:
+          type: string
+          description: The result files of the fine-tuned model
+        status:
+          type: string
+          description: The status of the fine-tuned model
+        validation_files:
+          type: string
+          description: The validation files used for fine-tuning
+        training_files:
+          type: string
+          description: The training files used for fine-tuning
+      description: The response object for a fine-tuned model
+    DatasetResponse:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the dataset file
+        purpose:
+          type: string
+          description: The purpose of the dataset
+        file:
+          type: array
+          items:
+            type: object
+          description: The file in the dataset
+        bytes:
+          type: integer
+          description: The size of the dataset in bytes
+        description:
+          type: string
+          description: The description of the dataset
+        created_at:
+          type: string
+          format: date-time
+          description: The timestamp of when the dataset was created
+        updated_at:
+          type: string
+          format: date-time
+          description: The timestamp of when the dataset was last updated
+        task:
+          type: string
+          description: The task related to the dataset
+        prompt:
+          type: string
+          description: The prompt related to the dataset
+        tenant:
+          type: string
+          description: The tenant that this dataset belongs to
+        id:
+          type: string
+          description: The id of this dataset
+      description: The response object for a dataset
+    UploadDataset:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the dataset
+        task:
+          type: string
+          description: The task related to the dataset
+        prompt:
+          type: string
+          description: The prompt related to the dataset
+        purpose:
+          type: string
+          description: The purpose of the dataset
+        description:
+          type: string
+          description: The description of the dataset
+        file:
+          type: array
+          items:
+            type: object
+      description: The request object for uploading a dataset
+    MetricRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the metric
+        task:
+          type: string
+          description: The task related to the metric
+        code_snippet:
+          type: string
+          description: The code snippet for the metric
+      description: The request object for creating a metric
+    MetricCreateResponse:
+      type: object
+      properties:
+        inserted:
+          type: boolean
+          description: Boolean flag representing whether the metric was successfully inserted
+    MetricResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the metric
+        name:
+          type: string
+          description: The name of the metric
+        code_snippet:
+          type: string
+          description: The code snippet for the metric
+          nullable: true
+        task:
+          type: string
+          description: The task name for the metric
+        description:
+          type: string
+          description: The description of for the metric
+        enabled_in_prod:
+          type: boolean
+          description: Boolean flag representing whether the metric is enabled in production
+          nullable: true
+        needs_ground_truth:
+          type: boolean
+          description: Boolean flag representing whether the metrics needs ground-truth labeling
+          nullable: true
+        return_type:
+          type: string
+          description: The return type of the metric
+          nullable: true
+        threshold:
+          type: object
+          description: The alerting thresholds of the metric
+          nullable: true
+        criteria:
+          type: string
+          description: The passing criteria of the metric
+          nullable: true
+        prompt:
+          type: string
+          description: The prompt that this metric is calculated on
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          description: The timestamp when the metric was last updated
+        pass_when:
+          type: boolean
+          description: Specifies when the metric will pass
+          nullable: true
+      description: The response object for a metric
+    GenerateQuery:
+      type: object
+      properties:
+        task:
+          type: string
+          description: The task for which the generation is being requested
+        input:
+          type: object
+          description: The input variables for the generation
+        prompts:
+          type: array
+          items:
+            type: string
+          description: The unique IDs of the prompts to generate from
+        model_id:
+          type: string
+          description: The unique ID of the fine-tuned model to generate from
+        best_of:
+          type: integer
+          description: The number of generations to be returned
+        metric:
+          type: string
+          description: The metric used for sorting the generations
+        sampling:
+          type: string
+          description: The sampling method used for generating the generations
+        metadata:
+          type: object
+          description: The metadata to track for the generation
+        stream:
+          type: boolean
+          description: A boolean flag that represents whether you want to generate a streaming output
+        user_properties:
+          type: object
+          description: The user properties to track for the generation
+        source:
+          type: string
+          description: The source of the generation
+        ground_truth:
+          type: string
+          description: The ground truth of the generation
+      description: The request object for generating text
+    GenerationResponse:
+      type: object
+      properties:
+        generation_id:
+          type: string
+          description: The unique ID of the generation
+        version:
+          type: string
+          description: The unique ID of the prompt
+        generation:
+          type: string
+          description: The generated completion
+      description: The response object for a generation
+    GenerationLoggingQuery:
+      type: object
+      properties:
+        task:
+          type: string
+          description: The task for which the generation is being logged
+        version:
+          type: string
+          description: The version of the prompt
+        model:
+          type: string
+          description: The model that was used to generate the text
+        prompt:
+          type: string
+          description: The prompt used to generate the text
+        inputs:
+          type: object
+          description: The inputs filled into the prompt
+        generation:
+          type: string
+          description: The text that was generated by the model provider
+        hyperparameters:
+          type: object
+          description: The hyperparameters that were used to generate the text
+        usage:
+          type: object
+          description: The token usage for the generation
+        source:
+          type: string
+          description: The source of the generation
+        latency:
+          type: number
+          description: The latency of the generation in milliseconds
+        user_properties:
+          type: object
+          description: The user properties to track for the generation
+        metadata:
+          type: object
+          description: The metadata to track for the generation
+        ground_truth:
+          type: string
+          description: The ground truth for the generation
+        feedback:
+          type: object
+          description: The feedback associated with this generation
+      description: The request object for logging a generation
+    FeedbackQuery:
+      type: object
+      properties:
+        task:
+          type: string
+          description: The task for which the feedback is being submitted
+        generation_id:
+          type: string
+          description: The ID of the generation for which feedback is being submitted
+        feedback_json:
+          type: object
+          description: The feedback JSON with one or many feedback items
+        ground_truth:
+          type: string
+          description: The ground truth for the generation
+      description: The request object for providing feedback
+    FeedbackResponse:
+      type: object
+      properties:
+        task:
+          type: string
+          description: The task for which the feedback was submitted
+        generation_id:
+          type: string
+          description: The ID of the generation for which feedback was submitted
+        feedback:
+          type: object
+          description: The feedback JSON with one or many feedback items
+        ground_truth:
+          type: string
+          description: The ground truth for the generation
+        created_at:
+          type: string
+          format: date-time
+          description: The timestamp of when the feedback was created
+      description: The response object for providing feedback
+    EvaluationLoggingQuery:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The id of the evaluation
+        name:
+          type: string
+          description: The name of the evaluation
+        description:
+          type: string
+          description: The description of the evaluation
+        task:
+          type: string
+          description: The task for which the evaluation is being created
+        prompts:
+          type: array
+          items:
+            type: object
+          description: The prompts for which the evaluation is being created
+        dataset:
+          type: array
+          items:
+            type: object
+          description: The dataset for which the evaluation is being created
+        datasetName:
+          type: string
+          description: The name of the dataset for which the evaluation is being created
+        metrics:
+          type: array
+          items:
+            type: array
+            items:
+              type: object
+          description: The metrics that are computed for the completions
+        metrics_to_compute:
+          type: array
+          items:
+            type: string
+          description: The metrics that are computed for the completions
+        results:
+          type: array
+          items:
+            type: object
+          description: The results of the evaluation
+        summary:
+          type: array
+          items:
+            type: object
+          description: The metric summary of the evaluation
+        comments:
+          type: array
+          items:
+            type: object
+          description: The comments for the evaluation
+        generations:
+          type: array
+          items:
+            type: object
+          description: The completions for prompts that are being evaluated
+        user:
+          type: string
+          description: The user running the evaluation
+      description: The request object for logging an evaluation
+    SuccessTraceResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Indicates whether the request was successful
+        session_id:
+          type: string
+          description: The ID of the session
+      description: The response object indicating the success of the tracing operation
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Indicates whether the request was successful
+        id:
+          type: string
+          description: The ID of the created object
+      description: The response object indicating the success of an operation
+    SessionStartQuery:
+      type: object
+      properties:
+        session_id:
+          type: string
+          description: The ID of the session
+        project:
+          type: string
+          description: The project name for the session
+        source:
+          type: string
+          description: The source of the session
+        session_name:
+          type: string
+          description: The name for the session
+        user_properties:
+          type: object
+          description: The user properties for the session
+      description: The request object for starting a session
+    SessionStartResponse:
+      type: object
+      properties:
+        session_id:
+          type: string
+          description: The ID of the started session
+        project_id:
+          type: string
+          description: The ID of the project for the session
+      description: The response object for starting a session
+    SessionEndResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Indicates whether ending the session was successful
+        id:
+          type: string
+          description: The id of the session
+      description: The response object for ending a session
+    SessionEventQuery:
+      type: object
+      properties:
+        event_id:
+          type: string
+          description: The ID of the event
+        parent_id:
+          type: string
+          description: The parent ID of the event
+          nullable: true
+        event_type:
+          type: string
+          description: The type of the event
+        event_name:
+          type: string
+          description: The name for the event
+        config:
+          type: object
+          description: The configuration of LLM, Tool or other for the event
+        children:
+          type: array
+          items:
+            type: object
+          description: Child events
+        inputs:
+          type: object
+          description: Inputs to the event
+        output:
+          type: string
+          description: Output of the event
+        error:
+          type: object
+          description: Error from the event
+          nullable: true
+        source:
+          type: string
+          description: Source of the event
+        duration:
+          type: number
+          description: Duration of the event
+        metadata:
+          type: object
+          description: Metadata of the event
+      description: The request object for querying session events
+    SessionEventResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Indicates whether recording the event was successful
+        event_id:
+          type: string
+          description: The ID of the event
+      description: The response object for recording a session event
+    SessionTrace:
+      type: object
+      properties:
+        logs:
+          type: array
+          items:
+            $ref: '#/components/schemas/SessionEventQuery'
+          description: The trace logs for the session
+      description: The response object for a session trace
+    SessionFeedback:
+      type: object
+      properties:
+        feedback:
+          type: object
+          description: The feedback for the session
+        event_id:
+          type: string
+          description: The ID of the specific event to provide feedback for
+      description: The request object for providing feedback for a session
+    TraceEvent:
+      type: object
+      required:
+        - name
+        - ph
+        - ts
+        - pid
+        - tid
+      properties:
+        name:
+          type: string
+          description: The name of the event.
+        cat:
+          type: string
+          description: The category of the event.
+        ph:
+          type: string
+          description: The phase of the event.
+        ts:
+          type: integer
+          format: int64
+          description: The timestamp of the event in microseconds.
+        pid:
+          type: integer
+          format: int32
+          description: The process ID.
+        tid:
+          type: integer
+          format: int32
+          description: The thread ID.
+        args:
+          type: object
+          additionalProperties: true
+          description: Arguments associated with the event.
+    TraceEventTrace:
+      type: array
+      items:
+        $ref: '#/components/schemas/TraceEvent'
+      description: A list of TraceEvent objects.
+
+security:
+  - BearerAuth: []
