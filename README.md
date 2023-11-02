@@ -32,7 +32,7 @@ import { HoneyHive } from "honeyhive";
         bearerAuth: "",
     });
 
-    const res = await sdk.honeyHive.deleteDatasetsName({
+    const res = await sdk.deleteDatasetsName({
         name: "string",
     });
 
@@ -113,7 +113,7 @@ import { HoneyHive } from "honeyhive";
         serverIdx: 0,
     });
 
-    const res = await sdk.honeyHive.deleteDatasetsName({
+    const res = await sdk.deleteDatasetsName({
         name: "string",
     });
 
@@ -139,7 +139,7 @@ import { HoneyHive } from "honeyhive";
         serverURL: "https://api.honeyhive.ai",
     });
 
-    const res = await sdk.honeyHive.deleteDatasetsName({
+    const res = await sdk.deleteDatasetsName({
         name: "string",
     });
 

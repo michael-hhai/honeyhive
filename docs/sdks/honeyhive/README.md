@@ -49,7 +49,7 @@ import { HoneyHive } from "honeyhive";
     bearerAuth: "",
   });
 
-  const res = await sdk.honeyHive.deleteDatasetsName({
+  const res = await sdk.deleteDatasetsName({
     name: "string",
   });
 
@@ -87,7 +87,7 @@ import { HoneyHive } from "honeyhive";
     bearerAuth: "",
   });
 
-  const res = await sdk.honeyHive.deleteMetrics({
+  const res = await sdk.deleteMetrics({
     metricId: "string",
     name: "string",
     task: "string",
@@ -127,7 +127,7 @@ import { HoneyHive } from "honeyhive";
     bearerAuth: "",
   });
 
-  const res = await sdk.honeyHive.deletePromptsId({
+  const res = await sdk.deletePromptsId({
     id: "<ID>",
   });
 
@@ -165,7 +165,7 @@ import { HoneyHive } from "honeyhive";
     bearerAuth: "",
   });
 
-  const res = await sdk.honeyHive.deleteTasks({
+  const res = await sdk.deleteTasks({
     name: "string",
   });
 
@@ -203,7 +203,7 @@ import { HoneyHive } from "honeyhive";
     bearerAuth: "",
   });
 
-  const res = await sdk.honeyHive.getDatasets({});
+  const res = await sdk.getDatasets({});
 
 
   if (res.statusCode == 200) {
@@ -239,7 +239,7 @@ import { HoneyHive } from "honeyhive";
     bearerAuth: "",
   });
 
-  const res = await sdk.honeyHive.getFineTunedModels({});
+  const res = await sdk.getFineTunedModels({});
 
 
   if (res.statusCode == 200) {
@@ -275,7 +275,7 @@ import { HoneyHive } from "honeyhive";
     bearerAuth: "",
   });
 
-  const res = await sdk.honeyHive.getFineTunedModelsId({
+  const res = await sdk.getFineTunedModelsId({
     id: "<ID>",
   });
 
@@ -313,7 +313,7 @@ import { HoneyHive } from "honeyhive";
     bearerAuth: "",
   });
 
-  const res = await sdk.honeyHive.getGenerations({});
+  const res = await sdk.getGenerations({});
 
 
   if (res.statusCode == 200) {
@@ -349,7 +349,7 @@ import { HoneyHive } from "honeyhive";
     bearerAuth: "",
   });
 
-  const res = await sdk.honeyHive.getMetrics({});
+  const res = await sdk.getMetrics({});
 
 
   if (res.statusCode == 200) {
@@ -385,7 +385,7 @@ import { HoneyHive } from "honeyhive";
     bearerAuth: "",
   });
 
-  const res = await sdk.honeyHive.getPrompts({});
+  const res = await sdk.getPrompts({});
 
 
   if (res.statusCode == 200) {
@@ -421,7 +421,7 @@ import { HoneyHive } from "honeyhive";
     bearerAuth: "",
   });
 
-  const res = await sdk.honeyHive.getSession({
+  const res = await sdk.getSession({
     query: {},
   });
 
@@ -459,7 +459,7 @@ import { HoneyHive } from "honeyhive";
     bearerAuth: "",
   });
 
-  const res = await sdk.honeyHive.getSessionSessionId({
+  const res = await sdk.getSessionSessionId({
     sessionId: "string",
   });
 
@@ -497,7 +497,7 @@ import { HoneyHive } from "honeyhive";
     bearerAuth: "",
   });
 
-  const res = await sdk.honeyHive.getSessionSessionIdExport({
+  const res = await sdk.getSessionSessionIdExport({
     sessionId: "string",
   });
 
@@ -535,7 +535,7 @@ import { HoneyHive } from "honeyhive";
     bearerAuth: "",
   });
 
-  const res = await sdk.honeyHive.getTasks({});
+  const res = await sdk.getTasks({});
 
 
   if (res.statusCode == 200) {
@@ -571,7 +571,7 @@ import { HoneyHive } from "honeyhive";
     bearerAuth: "",
   });
 
-  const res = await sdk.honeyHive.postDatasets({
+  const res = await sdk.postDatasets({
     file: [
       {},
     ],
@@ -611,7 +611,7 @@ import { HoneyHive } from "honeyhive";
     bearerAuth: "",
   });
 
-  const res = await sdk.honeyHive.postEvaluations({
+  const res = await sdk.postEvaluations({
     comments: [
       {},
     ],
@@ -674,7 +674,7 @@ import { HoneyHive } from "honeyhive";
     bearerAuth: "",
   });
 
-  const res = await sdk.honeyHive.postFeedback({
+  const res = await sdk.postFeedback({
     feedbackJson: {},
   });
 
@@ -712,7 +712,7 @@ import { HoneyHive } from "honeyhive";
     bearerAuth: "",
   });
 
-  const res = await sdk.honeyHive.postGenerations({
+  const res = await sdk.postGenerations({
     input: {},
     metadata: {},
     prompts: [
@@ -755,7 +755,7 @@ import { HoneyHive } from "honeyhive";
     bearerAuth: "",
   });
 
-  const res = await sdk.honeyHive.postGenerationsLog({
+  const res = await sdk.postGenerationsLog({
     feedback: {},
     hyperparameters: {},
     inputs: {},
@@ -798,7 +798,7 @@ import { HoneyHive } from "honeyhive";
     bearerAuth: "",
   });
 
-  const res = await sdk.honeyHive.postMetrics({});
+  const res = await sdk.postMetrics({});
 
 
   if (res.statusCode == 200) {
@@ -834,7 +834,7 @@ import { HoneyHive } from "honeyhive";
     bearerAuth: "",
   });
 
-  const res = await sdk.honeyHive.postPrompts({
+  const res = await sdk.postPrompts({
     fewShotExamples: [
       {},
     ],
@@ -877,7 +877,7 @@ import { HoneyHive } from "honeyhive";
     bearerAuth: "",
   });
 
-  const res = await sdk.honeyHive.postSessionStart({
+  const res = await sdk.postSessionStart({
     userProperties: {},
   });
 
@@ -915,7 +915,7 @@ import { HoneyHive } from "honeyhive";
     bearerAuth: "",
   });
 
-  const res = await sdk.honeyHive.postSessionSessionIdEnd({
+  const res = await sdk.postSessionSessionIdEnd({
     sessionId: "string",
   });
 
@@ -953,7 +953,7 @@ import { HoneyHive } from "honeyhive";
     bearerAuth: "",
   });
 
-  const res = await sdk.honeyHive.postSessionSessionIdEvent({
+  const res = await sdk.postSessionSessionIdEvent({
     sessionEventQuery: {
       children: [
         {},
@@ -1000,7 +1000,7 @@ import { HoneyHive } from "honeyhive";
     bearerAuth: "",
   });
 
-  const res = await sdk.honeyHive.postSessionSessionIdFeedback({
+  const res = await sdk.postSessionSessionIdFeedback({
     sessionFeedback: {
       feedback: {},
     },
@@ -1041,7 +1041,7 @@ import { HoneyHive } from "honeyhive";
     bearerAuth: "",
   });
 
-  const res = await sdk.honeyHive.postSessionsSessionIdTraces({
+  const res = await sdk.postSessionsSessionIdTraces({
     sessionTrace: {
       logs: [
         {
@@ -1092,7 +1092,7 @@ import { HoneyHive } from "honeyhive";
     bearerAuth: "",
   });
 
-  const res = await sdk.honeyHive.postTasks({
+  const res = await sdk.postTasks({
     datasets: [
       {
         file: [
@@ -1157,7 +1157,7 @@ import { HoneyHive } from "honeyhive";
     bearerAuth: "",
   });
 
-  const res = await sdk.honeyHive.putPromptsId({
+  const res = await sdk.putPromptsId({
     promptUpdateQuery: {
       fewShotExamples: [
         {},
@@ -1206,7 +1206,7 @@ import { HoneyHive } from "honeyhive";
     bearerAuth: "",
   });
 
-  const res = await sdk.honeyHive.putTasks({
+  const res = await sdk.putTasks({
     datasets: [
       {
         file: [

@@ -9,7 +9,7 @@ import { HoneyHive } from "honeyhive";
         bearerAuth: "",
     });
 
-    const res = await sdk.honeyHive.deleteDatasetsName({
+    const res = await sdk.deleteDatasetsName({
         name: "string",
     });
 
