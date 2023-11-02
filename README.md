@@ -7,25 +7,23 @@
 </div>
 
 <!-- Start SDK Installation -->
-# SDK Installation
+## SDK Installation
 
-## NPM
+### NPM
 
 ```bash
-npm add https://github.com/speakeasy-sdks/honeyhive
+npm add HoneyHive
 ```
 
-## Yarn
+### Yarn
 
 ```bash
-yarn add https://github.com/speakeasy-sdks/honeyhive
+yarn add HoneyHive
 ```
 <!-- End SDK Installation -->
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
-
-
 ```typescript
 import { HoneyHive } from "HoneyHive";
 
@@ -47,9 +45,9 @@ import { HoneyHive } from "HoneyHive";
 <!-- End SDK Example Usage -->
 
 <!-- Start SDK Available Operations -->
-# Available Resources and Operations
+## Available Resources and Operations
 
-## [HoneyHive SDK](docs/sdks/honeyhive/README.md)
+### [HoneyHive SDK](docs/sdks/honeyhive/README.md)
 
 * [deleteDatasetsName](docs/sdks/honeyhive/README.md#deletedatasetsname) - Delete a dataset
 * [deleteMetrics](docs/sdks/honeyhive/README.md#deletemetrics) - Delete a metric
@@ -84,16 +82,12 @@ import { HoneyHive } from "HoneyHive";
 
 <!-- Start Dev Containers -->
 
-
-
 <!-- End Dev Containers -->
 
 <!-- Start Error Handling -->
 # Error Handling
 
 Handling errors in your SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
-
-
 <!-- End Error Handling -->
 
 <!-- Start Server Selection -->
@@ -176,8 +170,6 @@ const httpClient = axios.create({
 
 const sdk = new HoneyHive({defaultClient: httpClient});
 ```
-
-
 <!-- End Custom HTTP Client -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
